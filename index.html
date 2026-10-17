@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ivion</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="needs-name">
+  <section id="onboarding" class="onboarding-screen">
+    <div class="onboarding-card">
+      <img src="ivion-logo.jpg" alt="Ivion Logo" class="onboarding-logo">
+      <p class="eyebrow">WILLKOMMEN BEI</p>
+      <h1>Ivion</h1>
+      <p>Wie sollen wir dich nennen?</p>
+      <form id="onboarding-form">
+        <label for="first-player-name">Dein Spielername</label>
+        <input id="first-player-name" maxlength="18" autocomplete="nickname" placeholder="Namen eingeben" required>
+        <button class="primary-btn" type="submit">Spiel starten</button>
+      </form>
+      <small>Dein Spielstand wird in diesem Browser gespeichert.</small>
+    </div>
+  </section>
+  <div class="app-shell">
+    <button class="drawer-backdrop" id="drawer-backdrop" aria-label="Menü schließen" hidden></button>
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><img class="brand-icon brand-logo" src="ivion-logo.jpg" alt="Ivion Logo"><div><strong>Ivion</strong><small>Dein Spiel-Universum</small></div></div>
+      <nav>
+        <button class="nav-btn active" data-view="dashboard">▦ <span>Menü</span></button>
+        <button class="nav-btn" data-view="fishing">🎣 <span>Angeln</span></button>
+        <button class="nav-btn" data-view="slots">▦ <span>Slot-Maschine</span></button>
+        <button class="nav-btn" data-view="roulette">◉ <span>Roulette</span></button>
+        <button class="nav-btn" data-view="minigames">✦ <span>Minispiele</span></button>
+        <button class="nav-btn" data-view="inventory">🎒 <span>Inventar</span></button>
+        <button class="nav-btn" data-view="profile">👤 <span>Profil & Level</span></button>
+      </nav>
+      <div class="account-switcher">
+        <label for="account-select">Spieler wechseln</label>
+        <select id="account-select" aria-label="Spieler wechseln"></select>
+        <button id="add-player" class="secondary-btn">+ Spieler hinzufügen</button>
+      </div>
+      <div class="sidebar-bottom"><span class="online-dot"></span> Lokal gespeichert<br><small>Dieses Gerät / dieser Browser</small></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-heading"><button class="menu-toggle" id="menu-toggle" aria-label="Navigation öffnen" aria-expanded="false"><span></span><span></span><span></span></button><div><p class="eyebrow">DEIN PERSÖNLICHES SPIEL</p><h1 id="page-title">Übersicht</h1></div></div>
+        <div class="top-actions"><div class="coin-chip"><span class="coin-symbol">●</span><strong id="top-coins">1.000</strong><small>Coins</small></div><div class="user-pill"><img class="avatar" id="top-avatar" alt="Profilbild" hidden><div class="avatar avatar-letter" id="top-avatar-letter">F</div><div><strong id="top-name">Fiete</strong><small id="top-level">Level 1</small></div></div></div>
+      </header>
+
+      <section class="view active" id="view-dashboard">
+        <div class="hero">
+          <div><span class="tag">✦ WILLKOMMEN ZURÜCK</span><h2>Dein nächstes Abenteuer<br><span>wartet schon.</span></h2><p>Angel seltene Fische, sammle Coins und steige im Level auf.</p>
+          <button class="primary-btn" data-go="fishing">Jetzt angeln <span>→</span></button></div>
+          <div class="hero-art" aria-hidden="true">🎣<span>✦</span><i>◈</i></div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-icon gold">◉</div><p>Deine Coins</p><strong id="stat-coins">1.000</strong><small>Dein Kontostand</small></article>
+          <article class="stat-card"><div class="stat-icon blue">🎣</div><p>Gefangene Fische</p><strong id="stat-fish">0</strong><small>Im Inventar</small></article>
+          <article class="stat-card"><div class="stat-icon purple">✦</div><p>Spielerlevel</p><strong id="stat-level">1</strong><small id="stat-xp">0 / 100 XP</small><div class="xp-track"><span id="stat-xp-bar"></span></div></article>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">JEDEN TAG ABHOLEN</p><h3>Tägliche Belohnung</h3></div><span class="tag subtle">24 Stunden / Kalendertag</span></div>
+        <article class="daily-card"><div class="daily-icon" aria-hidden="true">+</div><div class="daily-copy"><strong>Dein täglicher Bonus</strong><p id="daily-status">Hol dir deine Coins für heute.</p></div><div class="daily-reward">+250 <small>Coins</small></div><button id="claim-daily" class="primary-btn">Abholen</button></article>
+        <div class="section-heading"><div><p class="eyebrow">SCHNELLSTART</p><h3>Was machen wir heute?</h3></div></div>
+        <div class="quick-grid"><button data-go="fishing"><span class="quick-symbol">◉</span><strong>Angelplatz</strong><small>Entdecke seltene Fischarten</small></button><button data-go="slots"><span class="quick-symbol">▦</span><strong>Spielhalle</strong><small>Spiele mit virtuellen Coins</small></button><button data-go="inventory"><span class="quick-symbol">▤</span><strong>Sammlung</strong><small>Verwalte deine Fänge</small></button></div>
+      </section>
+
+      <section class="view" id="view-fishing">
+        <div class="page-intro"><div><p class="eyebrow">RUHIGES WASSER, GROSSE BEUTE</p><h2>Angelplatz</h2><p>Jeder Fang kostet 25 Coins. Seltene Fische geben mehr XP.</p></div><div class="big-emoji" aria-hidden="true">◉</div></div>
+        <div class="fishing-panel"><div class="water-art"><span>☁️</span><div class="sun"></div><div class="waves">〰 〰 〰 〰 〰</div><div class="float">🎣</div></div><div class="fishing-actions"><div><strong>Bereit für den nächsten Fang?</strong><p>Du erhältst Coins und XP, wenn du Fische verkaufst bzw. fängst.</p></div><button class="primary-btn" id="fish-btn">Auswerfen · 25 Coins</button></div><div id="catch-result" class="result-box hidden"></div></div>
+        <div class="section-heading"><div><p class="eyebrow">DEIN FANGBUCH</p><h3>Fischarten entdecken</h3></div></div>
+        <div class="rarity-grid">
+          <div class="rarity-card"><span>🐟</span><strong>Gewöhnlich</strong><small>50 % Chance</small></div><div class="rarity-card"><span>🐠</span><strong>Ungewöhnlich</strong><small>25 % Chance</small></div><div class="rarity-card"><span>🐡</span><strong>Selten</strong><small>15 % Chance</small></div><div class="rarity-card"><span>🦈</span><strong>Episch</strong><small>7 % Chance</small></div><div class="rarity-card"><span>🐉</span><strong>Legendär</strong><small>2,5 % Chance</small></div><div class="rarity-card"><span>🪼</span><strong>Mythisch</strong><small>0,5 % Chance</small></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-slots">
+        <div class="page-intro"><div><p class="eyebrow">NUR VIRTUELLE COINS</p><h2>Slot-Maschine</h2><p>Kein echtes Geld. Spiele verantwortungsvoll und nur mit Spiel-Coins.</p></div><div class="big-emoji" aria-hidden="true">▦</div></div>
+        <div class="slot-machine"><div class="slot-top">IVION <span>★</span> SLOTS</div><div class="slot-stats"><div><small>COINS</small><strong id="slot-coins">1.000</strong></div><div><small>EINSATZ</small><strong id="slot-current-bet">50</strong></div><div><small>BEST WIN</small><strong id="slot-best-win">0</strong></div></div><div class="reels" id="slot-reels"><div class="reel-window"><div id="reel-1">🍒</div></div><div class="reel-window"><div id="reel-2">⭐</div></div><div class="reel-window"><div id="reel-3">🔔</div></div><div class="reel-window"><div id="reel-4">💎</div></div><div class="reel-window"><div id="reel-5">🍋</div></div></div><div class="slot-message" id="slot-message">Wähle deinen Einsatz und dreh die Walzen.</div><div class="bet-row"><label for="bet-amount">Einsatz</label><input id="bet-amount" type="number" min="10" step="10" value="50"><button id="bet-half" class="secondary-btn">½ Guthaben</button><button id="bet-all" class="secondary-btn">All-in</button></div><button class="primary-btn spin-btn" id="spin-btn">Drehen</button><p class="payout-info">3 gleiche: 2×–10× · 4 gleiche: 15× · 5 gleiche: 25×</p></div>
+        <div class="section-heading"><div><p class="eyebrow">AUSZAHLUNGEN</p><h3>So funktionieren die Slots</h3></div></div>
+        <div class="payout-grid"><div>🍒 🍒 🍒 <span>2×</span></div><div>🍋 🍋 🍋 <span>3×</span></div><div>🔔 🔔 🔔 <span>5×</span></div><div>⭐ ⭐ ⭐ <span>8×</span></div><div>💎 💎 💎 <span>10×</span></div><div>7️⃣ 7️⃣ 7️⃣ <span>25×</span></div><div>4 gleiche Symbole <span>15×</span></div><div>5 gleiche Symbole <span>25×</span></div></div>
+      </section>
+
+      <section class="view" id="view-roulette">
+        <div class="page-intro"><div><p class="eyebrow">DREH DAS RAD</p><h2>Roulette</h2><p>Ein Spiel mit virtuellen Coins. Rot, Schwarz, Grün oder eine Zahl wählen.</p></div><div class="big-emoji" aria-hidden="true">◉</div></div>
+        <div class="roulette-layout">
+          <div class="roulette-wheel-card">
+            <div class="roulette-wheel-wrap"><div class="roulette-pointer"></div><div id="roulette-wheel" class="roulette-wheel"><div id="roulette-labels" class="roulette-labels"></div></div><div class="wheel-number roulette-center" id="roulette-number">0</div></div>
+            <div id="roulette-result" class="roulette-result">Das Rad wartet auf deinen Einsatz.</div>
+          </div>
+          <div class="roulette-controls">
+            <label for="roulette-bet">Einsatz in Coins</label><input id="roulette-bet" type="number" min="10" step="10" value="50">
+            <label for="roulette-choice">Dein Tipp</label><select id="roulette-choice"><option value="red">Rot · 2×</option><option value="black">Schwarz · 2×</option><option value="green">Grün · 14×</option><option value="even">Gerade · 2×</option><option value="odd">Ungerade · 2×</option><option value="number">Exakte Zahl · 14×</option></select>
+            <div id="number-choice-wrap" class="hidden"><label for="roulette-number-choice">Zahl (0–36)</label><input id="roulette-number-choice" type="number" min="0" max="36" value="17"></div>
+            <button class="primary-btn spin-btn" id="roulette-spin">Rad drehen</button>
+            <p class="payout-info">Auszahlung inklusive Einsatz: Rot/Schwarz/Gerade/Ungerade 2×, Grün oder exakte Zahl 14×. Nur Spiel-Coins.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-minigames">
+        <div class="page-intro"><div><p class="eyebrow">KURZE RUNDE, GROSSE SPANNUNG</p><h2>Minispiele</h2><p>Kleine Skill- und Glücksspiele für virtuelle Coins, mit Effekten und kleinen Belohnungen.</p></div><div class="big-emoji" aria-hidden="true">✦</div></div>
+        <div class="minigame-grid">
+          <article class="minigame-card">
+            <div class="minigame-art coinflip-art"><span id="coinflip-coin">●</span></div>
+            <div class="minigame-content"><span class="game-tag">50 / 50</span><h3>Münzwurf</h3><p>Wähle Kopf oder Zahl. Treffer bringt dir das Doppelte deines Einsatzes zurück.</p>
+              <label for="coinflip-bet">Einsatz</label><input id="coinflip-bet" type="number" min="10" step="10" value="50">
+              <div class="choice-row"><button class="secondary-btn coinflip-choice" data-choice="heads">Kopf</button><button class="secondary-btn coinflip-choice" data-choice="tails">Zahl</button></div>
+              <div class="mini-result" id="coinflip-result">Bereit?</div>
+            </div>
+          </article>
+          <article class="minigame-card">
+            <div class="minigame-art reaction-art"><span id="reaction-icon">◷</span></div>
+            <div class="minigame-content"><span class="game-tag">REAKTION</span><h3>Reaktions-Test</h3><p>Warte bis das Feld grün wird und klicke so schnell du kannst.</p>
+              <button class="primary-btn" id="reaction-start">Starten</button>
+              <button class="reaction-target" id="reaction-target" disabled>Warte auf Start</button>
+              <div class="mini-result" id="reaction-result">Schnelle Reaktion bringt XP.</div>
+            </div>
+          </article>
+          <article class="minigame-card">
+            <div class="minigame-art dailywheel-art"><div class="prize-wheel-wrap"><div class="prize-pointer"></div><div id="prize-wheel" class="prize-wheel"><span>🪙</span><span>⭐</span><span>💎</span><span>✨</span><span>🎁</span><span>🪙</span><span>⚡</span><span>🏆</span></div><div class="prize-wheel-hub">IV</div></div></div>
+            <div class="minigame-content"><span class="game-tag">KOSTENLOS</span><h3>Glücksrad</h3><p>Einmal pro Tag drehen und eine kleine Coin- oder XP-Belohnung erhalten.</p>
+              <button class="primary-btn" id="prize-wheel-spin">Glücksrad drehen</button>
+              <div class="mini-result" id="prize-wheel-result">Dein Tages-Spin wartet.</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" id="view-inventory">
+        <div class="page-intro"><div><p class="eyebrow">DEINE SAMMLUNG</p><h2>Inventar</h2><p>Hier siehst du alle Fische, die du bisher gefangen hast.</p></div><div class="big-emoji" aria-hidden="true">▤</div></div>
+        <div class="inventory-summary"><div><small>Fische gesammelt</small><strong id="inventory-count">0</strong></div><div><small>Geschätzter Verkaufswert</small><strong id="inventory-value">0 Coins</strong></div><button id="sell-fish" class="primary-btn">Alle Fische verkaufen</button></div>
+        <div id="inventory-list" class="inventory-list"></div>
+      </section>
+
+      <section class="view" id="view-profile">
+        <div class="page-intro"><div><p class="eyebrow">DEIN SPIELERKONTO</p><h2>Profil & Level</h2><p>Personalisiere deinen Namen und verfolge deinen Fortschritt.</p></div><div class="big-emoji" aria-hidden="true">◉</div></div>
+        <div class="profile-card"><div class="profile-avatar-wrap"><img class="profile-avatar profile-photo" id="profile-photo" alt="Profilbild" hidden><div class="profile-avatar" id="profile-avatar">F</div></div><div class="profile-main"><h3 id="profile-name">Spieler</h3><p id="profile-level-text">Level 1 · Anfänger</p><div class="xp-track wide"><span id="profile-xp-bar"></span></div><small id="profile-xp-text">0 / 100 XP</small></div></div>
+        <div class="settings-card"><label for="player-name">Spielername</label><div class="name-row"><input id="player-name" maxlength="18" value="" placeholder="Dein Name"><button id="save-profile" class="primary-btn">Speichern</button></div><label class="upload-label" for="avatar-upload">Profilbild (freiwillig)</label><div class="name-row"><input id="avatar-upload" type="file" accept="image/png,image/jpeg,image/webp"><button id="remove-avatar" class="secondary-btn" type="button">Bild entfernen</button></div><p>Deine Accounts und Spielstände werden aktuell nur in diesem Browser gespeichert. Profilbilder bitte möglichst klein halten.</p></div>
+        <div class="section-heading"><div><p class="eyebrow">FORTSCHRITT</p><h3>Level-Belohnungen</h3></div></div><div class="level-rewards"><div><span>Level 2</span><strong>+100 Coins</strong><small>Bei Levelaufstieg</small></div><div><span>Level 3</span><strong>+200 Coins</strong><small>Bei Levelaufstieg</small></div><div><span>Level 5</span><strong>+500 Coins</strong><small>Bei Levelaufstieg</small></div></div>
+        <button id="reset-game" class="danger-btn">Diesen Account zurücksetzen</button>
+        <div class="section-heading"><div><p class="eyebrow">COMMUNITY</p><h3>Spielerübersicht</h3></div></div>
+        <div id="players-list" class="players-list"></div>
+      </section>
+      <footer>Ivion · Fan-Projekt · Virtuelle Spiel-Coins ohne Echtgeldwert</footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
